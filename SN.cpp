@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
 int main() {
 
 	for (int i = 320; i < 481; i++) {
-		WireAnalysis* NoiseWireAnalysis = new WireAnalysis("./Pure-Stat.txt", i);
+		WireAnalysis* NoiseWireAnalysis = new WireAnalysis("./list.txt", i);
 	//	NoiseWireAnalysis->PlotWireVsRun();
 		NoiseWireAnalysis->MakeWireHistogram();
 	}

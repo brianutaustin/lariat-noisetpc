@@ -74,15 +74,15 @@ WireAnalysis::WireAnalysis(std::string ListTXT, int WireID) {
 	*/
 	fList 					= ListTXT;
 	fWireID					= WireID;
-	GetWireName();
-	DQMImport();
-	WaveformSampling();
+	this->GetWireName();
+	this->DQMImport();
+	this->WaveformSampling();
 }
 
 WireAnalysis::~WireAnalysis() {}
 
 void WireAnalysis::GetWireName() {
-	stringstream str_stream;
+	std::stringstream str_stream;
 	if (fWireID > 240) {
 		str_stream << fWireID - 240;
 		fWireName = "Collection_" + str_stream.str();
@@ -128,11 +128,11 @@ void WireAnalysis::DQMImport() {
 					./data/dqm_run_006021_spill_0001.root    0
 					./data/dqm_run_006022_spill_0001.root    0
 	*/
-	ifstream list;
+	std::ifstream list;
 	list.open(fList.c_str());
 
 	struct_DqmInput 	dummystruct;
-	string 				str_dummy;
+	std::string 				str_dummy;
 	int					i_dummy;
 	unsigned int countfile(0);
 
@@ -217,15 +217,15 @@ void WireAnalysis::PlotWireVsRun() {
 void WireAnalysis::PlotWaveform(int RunNumber, int SpillNumber, int EventNumber) {
 	TCanvas* canvas = new TCanvas();
 
-	stringstream str_stream_run;
+	std::stringstream str_stream_run;
 	str_stream_run << RunNumber;
 	std::string str_RunNumber = str_stream_run.str();
 
-	stringstream str_stream_spill;
+	std::stringstream str_stream_spill;
 	str_stream_spill << SpillNumber;
 	std::string str_SpillNumber = str_stream_spill.str();
 
-	stringstream str_stream_event;
+	std::stringstream str_stream_event;
 	str_stream_event << EventNumber;
 	std::string str_EventNumber = str_stream_event.str();
 
